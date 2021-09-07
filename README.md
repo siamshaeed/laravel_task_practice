@@ -12,11 +12,11 @@
 <pre>
  public function newProduct(Request $request){
         DB::table('products')->insert([
-            'mname'  => $request->mname,
-            'memail'  => $request->memail,
-            'mphone'  => $request->mphone,
-            'mdepertment'  => $request->mdepertment,
-            'gender'  => $request->gender,
+            'mname'       => $request->mname,
+            'memail'      => $request->memail,
+            'mphone'      => $request->mphone,
+            'mdepertment' => $request->mdepertment,
+            'gender'      => $request->gender,
         ]);
     }
 </pre>
