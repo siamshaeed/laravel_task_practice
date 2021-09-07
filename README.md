@@ -7,4 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+##Data insert (Query Builder Laravel) :
+
+<pre>
+ public function newProduct(Request $request){
+        DB::table('products')->insert([
+            'mname'  => $request->mname,
+            'memail'  => $request->memail,
+            'mphone'  => $request->mphone,
+            'mdepertment'  => $request->mdepertment,
+            'gender'  => $request->gender,
+        ]);
+    }
+</pre>
 
