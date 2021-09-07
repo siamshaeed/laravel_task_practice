@@ -8,9 +8,8 @@
 </p>
 
 ##Data insert (Query Builder Laravel) :
-
 <pre>
- public function newProduct(Request $request){
+        public function newProduct(Request $request){
         DB::table('products')->insert([
             'mname'       => $request->mname,
             'memail'      => $request->memail,
@@ -21,3 +20,18 @@
     }
 </pre>
 
+
+##Data insert (Eloquent ORM) Way-1 :
+<pre>
+        public function newProduct(Request $request){
+        $product = new Product();
+        $product->mname   = $request-> mname;
+        $product->memail   = $request-> memail;
+        $product->mphone   = $request-> mphone;
+        $product->mdepertment   = $request-> mdepertment;
+        $product->gender   = $request-> gender;
+        $product->save();
+
+        return redirect('all-product')->with('message', 'Product Insert Successfully');
+    }
+</pre>
