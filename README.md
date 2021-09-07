@@ -47,19 +47,15 @@
         }
 </pre>
 
-      <pre>
-     FrontEnd :
+<h4>FrontEnd For show</h4>
+ <pre>
        @foreach ($products as $product)
-            <tr>
-				<td>{{ $product->mname }}</td>
-				<td>{{ $product->memail }}</td>
-				<td>{{ $product->mphone }}</td>
-                <th>{{ $product->gender == 1 ? 'Male' : 'Female' }}</th>
-				<td>{{ $product->mdepertment}}</td>
-				<td>
-                    <a href="" class="btn btn-warning"><i class="far fa-edit"></i></a>
-                    <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
-                </td>
-			</tr>
+        <tr>
+			<td>{{ $product->mname }}</td>
+			<td>{{ $product->memail }}</td>
+			<td>{{ $product->mphone }}</td>
+            <th>{{ $product->gender == 1 ? 'Male' : 'Female' }}</th>
+			<td>{{ $product->mdepertment}}</td>
+		</tr>
         @endforeach
-      </pre>
+ </pre>
