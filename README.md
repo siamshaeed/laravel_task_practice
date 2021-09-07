@@ -36,3 +36,30 @@
            return redirect('all-product')->with('message', 'Product Insert Successfully');
          }
 </pre>
+
+##Data show (Eloquent) :
+<pre>
+        public function allProduct(){
+        $products = Product::all();
+        return view('frontEnd.home.showProduct',[
+            'products' => $products         //data pass by url
+        ]);
+        }
+</pre>
+
+      <pre>
+     FrontEnd :
+       @foreach ($products as $product)
+            <tr>
+				<td>{{ $product->mname }}</td>
+				<td>{{ $product->memail }}</td>
+				<td>{{ $product->mphone }}</td>
+                <th>{{ $product->gender == 1 ? 'Male' : 'Female' }}</th>
+				<td>{{ $product->mdepertment}}</td>
+				<td>
+                    <a href="" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                    <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                </td>
+			</tr>
+        @endforeach
+      </pre>
