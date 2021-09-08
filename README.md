@@ -95,3 +95,32 @@
                 <br>
                 <input type="submit" name="sbmt" value="Update Product" class="mt-2 ">
         </form>
+        
+##Data Update
+
+        <form action="{{ route('updateProduct') }}" method="post">
+                @csrf
+                <input class="myinput" type="text" name="mname" value="{{ $products->mname }}">
+                <input class="myinput" type="hidden" name="id" value="{{ $products->id }}">
+                <input class="myinput" type="email" name="memail" value="{{ $products->memail }}">
+                <input class="myinput" type="phone" name="mphone" value="{{ $products->mphone }}">
+                <input class="myinput" type="text" name="mdepertment" value="{{$products->mdepertment}}">
+                <h6>Gender</h6>
+                Male : <input class="" type="radio" value="1" name="gender" {{ $products->gender == 1 ? 'checked ': '' }}>
+                Female : <input class="" type="radio" value="0" name="gender" {{ $products->gender == 0 ? 'checked' : '' }}>
+                <br>
+                <input type="submit" name="sbmt" value="Update Product" class="mt-2 ">
+         </form>
+         
+         <pre>
+            public function updateProduct(Request $request){
+            $product = Product::find($request->id);
+            $product->mname = $request->mname;
+            $product->memail = $request->memail;
+            $product->mphone = $request->mphone;
+            $product->mdepertment = $request->mdepertment;
+            $product->gender = $request->gender;
+            $product->save();
+            return redirect('all-product')->with('message', 'Product Edit Successfully');
+            }
+         </pre>
