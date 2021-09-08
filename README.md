@@ -63,8 +63,6 @@
  </pre>
 
 ##Data Edit 
- Step 1 : Database table ID  select by route.
- 
  
     <a href="{{ route('editProduct',['id'=>$product->id])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
 
@@ -112,8 +110,8 @@
                 <input type="submit" name="sbmt" value="Update Product" class="mt-2 ">
          </form>
          
-         <pre>
-            public function updateProduct(Request $request){
+   <pre>
+        public function updateProduct(Request $request){
             $product = Product::find($request->id);
             $product->mname = $request->mname;
             $product->memail = $request->memail;
@@ -123,4 +121,17 @@
             $product->save();
             return redirect('all-product')->with('message', 'Product Edit Successfully');
             }
-         </pre>
+   </pre>
+   
+   ##Data Delete
+   
+    <a href="{{ route('deleteProduct',['id'=>$product->id])}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+    
+
+<pre>
+      public function deleteProduct($id){
+      $product = Product::find($id);
+      $product->delete();
+      return redirect('all-product')->with('message', 'Product Delete Successfully');
+      }
+</pre>
