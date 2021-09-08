@@ -65,10 +65,10 @@
 ##Data Edit 
  Step 1 : Database table ID  select by route.
  
- <pre>
-    <a href="{{ route('editProduct',['id'=>$product->id])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
- </pre>
  
+    <a href="{{ route('editProduct',['id'=>$product->id])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
+
+
   <pre>
     Route::get('edit-product/{id}', [App\Http\Controllers\ProductController::class, 'editProduct'])->name('editProduct');
  </pre>
