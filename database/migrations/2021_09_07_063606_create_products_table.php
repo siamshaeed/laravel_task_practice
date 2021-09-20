@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('mphone');
             $table->string('mdepertment');
             $table->tinyInteger('gender');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

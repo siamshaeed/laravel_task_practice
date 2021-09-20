@@ -16,9 +16,4 @@ class MastaringController extends Controller
     {
         return view('frontEnd.home.create');
     }
-
-    public function allProduct()
-    {
-        return view('frontEnd.home.showProduct');
-    }
 }

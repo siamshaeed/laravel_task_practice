@@ -31,8 +31,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				@yield('body')
-                {{-- all data body --}}
+                {{-- All Product Body--}}
                 @yield('allDataBody')
+                {{-- Edit Product Body --}}
+                @yield('editProduct')
 			</div>
 		</div>
 	</div>
