@@ -1,64 +1,137 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##CRUD
+<hr>
+##Data insert (Query Builder Laravel) :
+<pre>
+        public function newProduct(Request $request){
+        DB::table('products')->insert([
+            'mname'       => $request->mname,
+            'memail'      => $request->memail,
+            'mphone'      => $request->mphone,
+            'mdepertment' => $request->mdepertment,
+            'gender'      => $request->gender,
+        ]);
+    }
+</pre>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+##Data insert (Eloquent ORM) Way-1 :
+<pre>
+        public function newProduct(Request $request){
+        $product = new Product();
+        $product->mname         = $request-> mname;
+        $product->memail        = $request-> memail;
+        $product->mphone        = $request-> mphone;
+        $product->mdepertment   = $request-> mdepertment;
+        $product->gender        = $request-> gender;
+        $product->save();
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+        return redirect('all-product')->with('message', 'Product Insert Successfully');
+    }
+</pre>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+##Data insert (Eloquent ORM) Way-2 :
+<pre>
+         public function newProduct(Request $request){
+           Product::create($request->all());
+           return redirect('all-product')->with('message', 'Product Insert Successfully');
+         }
+</pre>
 
-## Learning Laravel
+##Data show (Eloquent) :
+<pre>
+        public function allProduct(){
+        $products = Product::all();
+        return view('frontEnd.home.showProduct',[
+            'products' => $products         //data pass by url
+        ]);
+        }
+</pre>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h4>FrontEnd For show</h4>
+ <pre>
+       @foreach ($products as $product)
+        <tr>
+			<td>{{ $product->mname }}</td>
+			<td>{{ $product->memail }}</td>
+			<td>{{ $product->mphone }}</td>
+            <th>{{ $product->gender == 1 ? 'Male' : 'Female' }}</th>
+			<td>{{ $product->mdepertment}}</td>
+		</tr>
+        @endforeach
+ </pre>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+##Data Edit 
+ 
+    <a href="{{ route('editProduct',['id'=>$product->id])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+  <pre>
+    Route::get('edit-product/{id}', [App\Http\Controllers\ProductController::class, 'editProduct'])->name('editProduct');
+ </pre>
+ 
+  <pre>
+     public function editProduct($id){
+        $products = Product::find($id); //find table row by $id
+        return view('frontEnd.home.editProduct',[
+            'products' => $products //data pass by url
+        ]);
+    }
+ </pre>
+ FrontEnd :
 
-### Premium Partners
+        <form action="#" method="">
+                @csrf
+                <input class="myinput" type="text" name="mname" value="{{ $products->mname }}">
+                <input class="myinput" type="email" name="memail" value="{{ $products->memail }}">
+                <input class="myinput" type="phone" name="mphone" value="{{ $products->mphone }}">
+                <input class="myinput" type="text" name="mdepertment" value="{{$products->mdepertment}}">
+                <h6>Gender</h6>
+                Male : <input class="" type="radio" value="1" name="gender" {{ $products->gender == 1 ? 'checked ': '' }}>
+                Female : <input class="" type="radio" value="0" name="gender" {{ $products->gender == 0 ? 'checked' : '' }}>
+                <br>
+                <input type="submit" name="sbmt" value="Update Product" class="mt-2 ">
+        </form>
+        
+##Data Update
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+        <form action="{{ route('updateProduct') }}" method="post">
+                @csrf
+                <input class="myinput" type="text" name="mname" value="{{ $products->mname }}">
+                <input class="myinput" type="hidden" name="id" value="{{ $products->id }}">
+                <input class="myinput" type="email" name="memail" value="{{ $products->memail }}">
+                <input class="myinput" type="phone" name="mphone" value="{{ $products->mphone }}">
+                <input class="myinput" type="text" name="mdepertment" value="{{$products->mdepertment}}">
+                <h6>Gender</h6>
+                Male : <input class="" type="radio" value="1" name="gender" {{ $products->gender == 1 ? 'checked ': '' }}>
+                Female : <input class="" type="radio" value="0" name="gender" {{ $products->gender == 0 ? 'checked' : '' }}>
+                <br>
+                <input type="submit" name="sbmt" value="Update Product" class="mt-2 ">
+         </form>
+         
+   <pre>
+        public function updateProduct(Request $request){
+            $product = Product::find($request->id);
+            $product->mname = $request->mname;
+            $product->memail = $request->memail;
+            $product->mphone = $request->mphone;
+            $product->mdepertment = $request->mdepertment;
+            $product->gender = $request->gender;
+            $product->save();
+            return redirect('all-product')->with('message', 'Product Edit Successfully');
+            }
+   </pre>
+   
+   ##Data Delete
+   
+    <a href="{{ route('deleteProduct',['id'=>$product->id])}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+    
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<pre>
+      public function deleteProduct($id){
+      $product = Product::find($id);
+      $product->delete();
+      return redirect('all-product')->with('message', 'Product Delete Successfully');
+      }
+</pre>
