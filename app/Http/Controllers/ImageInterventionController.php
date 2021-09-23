@@ -17,7 +17,9 @@ class ImageInterventionController extends Controller
         $image = $request->file('imageinput');
         $imageName = $image->getClientOriginalName();
         $directory = 'blog-image/' . $imageName;
-        Image::make($image)->save(public_path($directory));
+
+        //Intervention Image simple upload done
+        $resize_image = Image::make($image)->save(public_path($directory));
 
          $dbImage = new Invtimage();
          $dbImage->imageField   =  $directory;
