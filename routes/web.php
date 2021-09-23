@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageInterventionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,6 +14,9 @@ Route::get('edit-product/{id}', [App\Http\Controllers\ProductController::class, 
 Route::post('update-product', [App\Http\Controllers\ProductController::class, 'updateProduct'])->name('updateProduct');
 Route::get('delete-product/{id}', [App\Http\Controllers\ProductController::class, 'deleteProduct'])->name('deleteProduct');
 
+// Intervention Image Package Laravel
+Route::get('image-intervention', [App\Http\Controllers\ImageInterventionController::class, 'ImageIntervention'])->name('ImageIntervention');
+Route::post('image-upload', [App\Http\Controllers\ImageInterventionController::class, 'imageupload'])->name('imageupload');
 
 // Restore
 Route::get('restore-product', [App\Http\Controllers\ProductController::class, 'restoreProduct'])->name('restoreProduct');
