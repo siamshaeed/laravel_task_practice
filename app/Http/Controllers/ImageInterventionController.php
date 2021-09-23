@@ -21,8 +21,9 @@ class ImageInterventionController extends Controller
         //Intervention Image simple upload
         // $resize_image = Image::make($image)->save(public_path($directory));
 
-        //Intervention Image with resize upload
-        // $resize_image = Image::make($image)->resize(100,100)->save(public_path($directory));
+        //Intervention Image upload with resize
+        $resize_image = Image::make($image)->resize(300,200)->save(public_path($directory));
+
 
          $dbImage = new Invtimage();
          $dbImage->imageField   =  $directory;
