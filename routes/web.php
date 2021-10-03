@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ImageInterventionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ValidationsController;
 
 
 // frontEnd Route
@@ -20,3 +21,7 @@ Route::post('image-upload', [App\Http\Controllers\ImageInterventionController::c
 
 // Restore
 Route::get('restore-product', [App\Http\Controllers\ProductController::class, 'restoreProduct'])->name('restoreProduct');
+
+//Form Validations with custom message
+Route::get('validation/create-form', [ValidationsController::class, 'createForm'])->name('createForm');
+Route::post('validation/submit', [ValidationsController::class, 'formSubmit'])->name('formSubmit');
