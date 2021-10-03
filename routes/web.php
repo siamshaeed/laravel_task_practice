@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ValidationsController;
 
 
-// frontEnd Route
+// FrontEnd Route
 Route::get('/', [App\Http\Controllers\MastaringController::class, 'index'])->name('index');
 Route::get('create-page', [App\Http\Controllers\MastaringController::class, 'createProduct'])->name('createProduct');
 
+// CRUD
 Route::get('all-product', [App\Http\Controllers\ProductController::class, 'allProduct'])->name('allProduct');
 Route::post('new-product', [App\Http\Controllers\ProductController::class, 'newProduct'])->name('newProduct');
 Route::get('edit-product/{id}', [App\Http\Controllers\ProductController::class, 'editProduct'])->name('editProduct');
@@ -19,7 +20,7 @@ Route::get('delete-product/{id}', [App\Http\Controllers\ProductController::class
 Route::get('image-intervention', [App\Http\Controllers\ImageInterventionController::class, 'ImageIntervention'])->name('ImageIntervention');
 Route::post('image-upload', [App\Http\Controllers\ImageInterventionController::class, 'imageupload'])->name('imageupload');
 
-// Restore
+// Restore from soft delete
 Route::get('restore-product', [App\Http\Controllers\ProductController::class, 'restoreProduct'])->name('restoreProduct');
 
 //Form Validations with custom message
