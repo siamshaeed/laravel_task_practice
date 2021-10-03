@@ -15,7 +15,7 @@
                 @error('mname')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
-                <input class="myinput" type="email" name="memail" placeholder="Enter Your Email">
+                <input class="myinput" type="text" name="memail" value="{{ old('memail') }}" placeholder="Enter Your Email">
                 @error('memail')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
