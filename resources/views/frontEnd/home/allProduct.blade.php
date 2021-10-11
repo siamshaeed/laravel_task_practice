@@ -41,8 +41,8 @@
         </div>
 
 
-        // For Restore and permanent delete data
-        <div class="readTable">
+      {{-- For Restore and permanent delete data --}}
+        {{-- <div class="readTable">
             <h2 class="readTitle">Student List</h2>
             <h4 class="text-center text-success mt-2"> {{ Session::get('message') }} </h4>
             <table class="table table-hover table-striped text-center">
@@ -67,13 +67,13 @@
                             <td>
                                 <a href="{{ route('restoreProduct') }}" class="btn btn-warning"><i
                                         class="fas fa-trash-restore-alt"></i></a>
-                                {{-- <a href="{{ route('deleteProduct', ['id' => $product->id]) }}" class="btn btn-danger"><i
-                                        class="far fa-trash-alt"></i></a> --}}
+                                <a href="{{ route('deleteProduct', ['id' => $product->id]) }}" class="btn btn-danger"><i
+                                        class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div> --}}
     </div>
 @endsection
