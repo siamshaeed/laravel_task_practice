@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\ImageInterventionController;
+use App\Http\Controllers\PolymorphicRelationshipController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ValidationsController;
-
+use App\Models\Images;
+use App\Models\Posts;
+use App\Models\User;
 
 // FrontEnd Route
 Route::get('/', [App\Http\Controllers\MastaringController::class, 'index'])->name('index');
@@ -26,3 +29,7 @@ Route::get('restore-product', [App\Http\Controllers\ProductController::class, 'r
 //Form Validations with custom message
 Route::get('validation/create-form', [ValidationsController::class, 'createForm'])->name('createForm');
 Route::post('validation/submit', [ValidationsController::class, 'formSubmit'])->name('formSubmit');
+
+//Polymorphic Relationships
+Route::get('polymorphic-relationships/one-to-one', [PolymorphicRelationshipController::class, 'oneToOne']);
+
