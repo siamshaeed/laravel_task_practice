@@ -11,9 +11,10 @@ class PolymorphicRelationshipController extends Controller
     public function oneToOne(){
 
     $image = Images::find(6);
-    // return $image->imageable;
-    $post = Posts::find(2);
-    return $post->image;
+    return $image->imageable;
+
+    // $post = Posts::find(3);
+    // return $post->image;
 
 
     // $user = Posts::find(2);
@@ -22,6 +23,6 @@ class PolymorphicRelationshipController extends Controller
 
     // $image->imageable()->associate($user);
     // return $image->save();
-    // return $user;
+    // // return $user;
     }
 }
