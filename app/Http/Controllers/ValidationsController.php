@@ -16,7 +16,15 @@ class ValidationsController extends Controller
             'memail'    =>    'required|email',
             'mphone'    =>    'required',
         ];
-        $this->validate($request,$rules);
+
+        $customMeessage = [
+            'mname.required'   => 'Enter Your Name',
+            'mname.max'   => 'You can not user five charecter for your name ',
+            'memail.required'   => 'Enter Your Email',
+            'memail.email'   => 'Email must be valid',
+            'mphone.required'   => 'Enter Your Phone',
+        ];
+        $this->validate($request,$rules,$customMeessage);
         return $request->all();
     }
 }

@@ -135,3 +135,46 @@
       return redirect('all-product')->with('message', 'Product Delete Successfully');
       }
 </pre>
+
+#Form Validation 
+
+            <form action="{{route('formSubmit')}}" method="post">
+                @csrf
+                <input class="myinput" type="text" name="mname" value="{{ old('mname') }}" placeholder="Enter Your Name">
+                @error('mname')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <input class="myinput" type="text" name="memail" value="{{ old('memail') }}" placeholder="Enter Your Email">
+                @error('memail')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <input class="myinput" type="phone" name="mphone" placeholder="Enter Your phone">
+                @error('mphone')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <input class="myinput" type="text" name="mdepertment" placeholder="Enter Your Depertment">
+                <h6>Gender</h6>
+                Male : <input class="" type="radio" name="gender" value="1">
+                Female : <input class="" type="radio" name="gender" value="0">
+                <br>
+                <input type="submit" name="sbmt" value="SUBMIT" class="mt-2 ">
+            </form>
+
+
+                  public function formSubmit(Request $request){
+                  $rules = [
+                      'mname'     =>    'required|max:5',
+                      'memail'    =>    'required|email',
+                      'mphone'    =>    'required',
+                  ];
+             
+                  $customMeessage = [
+                      'mname.required'   => 'Enter Your Name',
+                      'mname.max'   => 'You can not user five charecter for your name ',
+                      'memail.required'   => 'Enter Your Email',
+                      'memail.email'   => 'Email must be valid',
+                      'mphone.required'   => 'Enter Your Phone',
+                  ];
+                  $this->validate($request,$rules,$customMeessage);
+                  return $request->all();
+                  }
