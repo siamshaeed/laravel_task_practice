@@ -1,7 +1,7 @@
 @extends('frontEnd.master')
 
 @section('title')
-   Validations
+   Form Validations
 @endsection
 
 @section('body')
