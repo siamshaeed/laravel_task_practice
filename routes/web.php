@@ -32,4 +32,3 @@ Route::post('validation/submit', [ValidationsController::class, 'formSubmit'])->
 
 //Polymorphic Relationships
 Route::get('polymorphic-relationships/one-to-one', [PolymorphicRelationshipController::class, 'oneToOne']);
-
