@@ -27,8 +27,6 @@
                 {{-- <select class="myinput selectbBorder" name="mdepertment">
                     <option>Select Your Depertment</option>
                     <option>CSE</option>
-                    <option>EEE</option>
-                    <option>CIVIL</option>
                 </select> --}}
                 <h6>Gender</h6>
                 Male : <input class="" type="radio" name="gender" value="1">
