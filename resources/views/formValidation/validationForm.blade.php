@@ -24,10 +24,6 @@
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
                 <input class="myinput" type="text" name="mdepertment" placeholder="Enter Your Depertment">
-                {{-- <select class="myinput selectbBorder" name="mdepertment">
-                    <option>Select Your Depertment</option>
-                    <option>CSE</option>
-                </select> --}}
                 <h6>Gender</h6>
                 Male : <input class="" type="radio" name="gender" value="1">
                 Female : <input class="" type="radio" name="gender" value="0">
