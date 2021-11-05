@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HttpClientController;
 use App\Http\Controllers\ImageInterventionController;
 use App\Http\Controllers\PolymorphicRelationshipController;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,7 @@ use App\Http\Controllers\ValidationsController;
 use App\Models\Images;
 use App\Models\Posts;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 
 // FrontEnd Route
 Route::get('/', [App\Http\Controllers\MastaringController::class, 'index'])->name('index');
@@ -32,3 +34,7 @@ Route::post('validation/submit', [ValidationsController::class, 'formSubmit'])->
 
 //Polymorphic Relationships
 Route::get('polymorphic-relationships/one-to-one', [PolymorphicRelationshipController::class, 'oneToOne']);
+
+// HTTP Client
+Route::get('http-client', [HttpClientController::class, 'httpClent']);
+Route::get('add-data', [HttpClientController::class, 'addData']);
