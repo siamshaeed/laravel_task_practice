@@ -3,6 +3,7 @@
 use App\Http\Controllers\HttpClientController;
 use App\Http\Controllers\ImageInterventionController;
 use App\Http\Controllers\PolymorphicRelationshipController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ValidationsController;
 use App\Models\Images;
@@ -38,3 +39,8 @@ Route::get('polymorphic-relationships/one-to-one', [PolymorphicRelationshipContr
 // HTTP Client
 Route::get('http-client', [HttpClientController::class, 'httpClent']);
 Route::get('add-data', [HttpClientController::class, 'addData']);
+
+//Session
+Route::get('session/get', [SessionController::class, 'getSessionData']);
+Route::get('session/store', [SessionController::class, 'sessionStore']);
+Route::get('session/destroy', [SessionController::class, 'sessionDestroy']);
