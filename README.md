@@ -178,3 +178,11 @@
                   $this->validate($request,$rules,$customMeessage);
                   return $request->all();
                   }
+##Authentication (laravel Defult)
+                <pre>
+                1.  composer require laravel/ui
+                2.  php artisan ui vue --auth
+                3.  npm install
+                4.  npm run dev
+                If Error ( npm i vue-loader )   Then again ( npm run dev ).
+                </pre>
