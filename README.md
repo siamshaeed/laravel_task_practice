@@ -178,6 +178,7 @@
                   $this->validate($request,$rules,$customMeessage);
                   return $request->all();
                   }
+                  
 ##Authentication (laravel Defult)
                 <pre>
                 1.  composer require laravel/ui
