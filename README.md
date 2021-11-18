@@ -185,5 +185,5 @@
                 2.  php artisan ui vue --auth
                 3.  npm install
                 4.  npm run dev
-                If Error ( npm i vue-loader )   Then again ( npm run dev ).
+                If Error ( npm i vue-loader ) Then again ( npm run dev ).
                 </pre>
