@@ -29,7 +29,7 @@ Route::post('image-upload', [App\Http\Controllers\ImageInterventionController::c
 // Restore from soft delete
 Route::get('restore-product', [App\Http\Controllers\ProductController::class, 'restoreProduct'])->name('restoreProduct');
 
-//Form Validations with-custom message
+//Form Validations with custom message
 Route::get('validation/create-form', [ValidationsController::class, 'createForm'])->name('createForm');
 Route::post('validation/submit', [ValidationsController::class, 'formSubmit'])->name('formSubmit');
 
