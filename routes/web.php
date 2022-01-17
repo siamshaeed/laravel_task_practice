@@ -44,3 +44,5 @@ Route::get('add-data', [HttpClientController::class, 'addData']);
 Route::get('session/get', [SessionController::class, 'getSessionData']);
 Route::get('session/store', [SessionController::class, 'sessionStore']);
 Route::get('session/destroy', [SessionController::class, 'sessionDestroy']);
+
+//
