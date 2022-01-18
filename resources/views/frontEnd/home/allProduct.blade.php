@@ -41,7 +41,7 @@
         </div>
 
 
-      {{-- For Restore and permanent delete data --}}
+        {{-- For Restore and permanent delete data --}}
         {{-- <div class="readTable">
             <h2 class="readTitle">Student List</h2>
             <h4 class="text-center text-success mt-2"> {{ Session::get('message') }} </h4>
@@ -75,5 +75,6 @@
                 </tbody>
             </table>
         </div> --}}
+        
     </div>
 @endsection
