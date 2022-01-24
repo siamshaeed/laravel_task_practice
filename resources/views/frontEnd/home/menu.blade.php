@@ -9,10 +9,8 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('allProduct')}}">All Product</a>
         </li>
-
         {{-- <li class="nav-item">
             <a class="nav-link " href="delete.php">Delete</a>
         </li> --}}
-
     </ul>
 </div>
